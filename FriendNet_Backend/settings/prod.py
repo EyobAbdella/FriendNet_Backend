@@ -7,11 +7,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DEBUG = True
+DEBUG = False
 
 SECRET_KEY = os.environ["SECRET_KEY"]
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["friendnet-fju8.onrender.com"]
 
 # HTTPS Settings
 SESSION_COOKIE_SECURE = True
@@ -26,16 +26,6 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 DATABASES = {"default": dj_database_url.config()}
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.mysql",
-#         "NAME": os.environ.get("DB_NAME"),
-#         "USER": os.environ.get("DB_USER"),
-#         "PASSWORD": os.environ.get("DB_PASSWORD"),
-#         "HOST": os.environ.get("DB_HOST"),
-#         "PORT": os.environ.get("DB_PORT"),
-#     }
-# }
 
 REDIS_URL = os.environ["REDIS_URL"]
 

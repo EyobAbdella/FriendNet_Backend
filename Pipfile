@@ -17,6 +17,9 @@ django-debug-toolbar = "*"
 channels-redis = "*"
 gunicorn = "*"
 mysqlclient = "*"
+python-dotenv = "*"
+psycopg2-binary = "*"
+whitenoise = "*"
 
 [dev-packages]
 
