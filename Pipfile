@@ -20,6 +20,8 @@ mysqlclient = "*"
 python-dotenv = "*"
 psycopg2-binary = "*"
 whitenoise = "*"
+django-cloudinary-storage = "*"
+cloudinary = "*"
 
 [dev-packages]
 

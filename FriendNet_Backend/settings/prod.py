@@ -13,6 +13,19 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 
 ALLOWED_HOSTS = ["friendnet-fju8.onrender.com"]
 
+CLOUD_NAME = os.environ["CLOUD_NAME"]
+API_KEY = os.environ["API_KEY"]
+API_SECRET = os.environ["API_SECRET"]
+
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": CLOUD_NAME,
+    "API_KEY": API_KEY,
+    "API_SECRET": API_SECRET,
+}
+
+
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+
 # HTTPS Settings
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
