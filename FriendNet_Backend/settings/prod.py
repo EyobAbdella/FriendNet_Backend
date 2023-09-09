@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DEBUG = False
+DEBUG = True
 
 SECRET_KEY = os.environ["SECRET_KEY"]
 
