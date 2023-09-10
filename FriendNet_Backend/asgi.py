@@ -11,7 +11,7 @@ import os
 from channels.routing import ProtocolTypeRouter, URLRouter
 from django.core.asgi import get_asgi_application
 from channels.security.websocket import AllowedHostsOriginValidator
-from social.middleware import TokenAuthMiddleware
+from FriendNet_Backend.middleware import TokenAuthMiddleware
 from channels.auth import AuthMiddlewareStack
 from social import routing
 
