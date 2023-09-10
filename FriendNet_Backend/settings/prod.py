@@ -9,6 +9,10 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 
 ALLOWED_HOSTS = ["friendnet-fju8.onrender.com"]
 
+
+STATIC_URL = "/static/"
+STATICFILES_STORAGE = "cloudinary_storage.storage.StaticHashedCloudinaryStorage"
+
 CLOUD_NAME = os.environ["CLOUD_NAME"]
 API_KEY = os.environ["API_KEY"]
 API_SECRET = os.environ["API_SECRET"]
@@ -17,6 +21,7 @@ CLOUDINARY_STORAGE = {
     "CLOUD_NAME": CLOUD_NAME,
     "API_KEY": API_KEY,
     "API_SECRET": API_SECRET,
+    "EXCLUDE_DELETE_ORPHANED_MEDIA_PATHS": ("file/", "image/"),
 }
 
 
