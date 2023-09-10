@@ -445,9 +445,16 @@ class GroupMessageViewSet(ModelViewSet):
     def create(self, request, *args, **kwargs):
         room_id = kwargs["group_pk"]
         user_id = request.user.id
+        file_size = request.FILES.get("file").size
+
         serializer = GroupMessagesSerializer(
             data=request.data,
-            context={"user_id": user_id, "room_id": room_id, "request": self.request},
+            context={
+                "user_id": user_id,
+                "room_id": room_id,
+                "request": self.request,
+                "file_size": file_size,
+            },
         )
         serializer.is_valid(raise_exception=True)
         file_info = serializer.save()
@@ -458,7 +465,7 @@ class GroupMessageViewSet(ModelViewSet):
             "sender_id": serializer.data["sender_id"],
             "username": serializer.data["username"],
             "file_name": serializer.data["file_name"],
-            "file_size": serializer.data["file_size"],
+            "file_size": file_size,
             "file": serializer.data["file"],
             "profile_image": serializer.data["profile_image"],
             "created_at": serializer.data["created_at"],

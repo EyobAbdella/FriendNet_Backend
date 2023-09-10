@@ -16,15 +16,15 @@ from channels.auth import AuthMiddlewareStack
 from social import routing
 
 
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'FriendNet_Backend.settings.dev')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "FriendNet_Backend.settings.dev")
 
 application = ProtocolTypeRouter(
     {
         "http": get_asgi_application(),
         "websocket": AllowedHostsOriginValidator(
-            
-            TokenAuthMiddleware(AuthMiddlewareStack(URLRouter(routing.websocket_urlpatterns))) 
+            TokenAuthMiddleware(
+                AuthMiddlewareStack(URLRouter(routing.websocket_urlpatterns))
+            )
         ),
     }
 )
