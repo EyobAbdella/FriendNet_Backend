@@ -22,6 +22,7 @@ psycopg2-binary = "*"
 whitenoise = "*"
 django-cloudinary-storage = "*"
 cloudinary = "*"
+twisted = {extras = ["http2", "tls"], version = "*"}
 
 [dev-packages]
 
