@@ -136,7 +136,7 @@ LOGGING = {
     "loggers": {
         "": {
             "handlers": ["console", "file"],
-            "level": os.environ.get("DJANGO_LOG_LEVEL", "WARNING"),
+            "level": os.environ.get("DJANGO_LOG_LEVEL", "INFO"),
         }
     },
     "formatters": {
