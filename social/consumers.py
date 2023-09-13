@@ -1,6 +1,10 @@
 import json
 from channels.db import database_sync_to_async
 from channels.generic.websocket import AsyncWebsocketConsumer
+import logging
+import time
+
+logger = logging.getLogger(__name__)
 
 
 class BaseChatConsumer(AsyncWebsocketConsumer):
@@ -18,6 +22,7 @@ class BaseChatConsumer(AsyncWebsocketConsumer):
         raise NotImplementedError
 
     async def receive(self, text_data):
+        receive_time = time.time()
         data = json.loads(text_data)
         text = data["text"]
         room_id = data["room_id"]
@@ -27,13 +32,16 @@ class BaseChatConsumer(AsyncWebsocketConsumer):
         )
         serializer.is_valid(raise_exception=True)
         message = await self.save_data(serializer)
+        message["receive_time"] = receive_time
         await self.channel_layer.group_send(
             str(room_id), {"type": "chat.message", "message": message}
         )
 
     async def chat_message(self, event):
         message = event["message"]
-
+        send_time = time.time()
+        receive_time = message["receive_time"]
+        logger.info(f"Time between receive and send: {receive_time - send_time}")
         await self.send(
             text_data=json.dumps(
                 {
